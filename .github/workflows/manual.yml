@@ -29,3 +29,7 @@ jobs:
           aws-access-key-id     : ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION_NAME }}
+      
+      - name: Copy deployment packege to S3 bucket
+        run: aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ EB_PACKAGE_S3_BACKET_NAME }}/
+        
